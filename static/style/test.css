@@ -1,0 +1,337 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+
+
+
+
+*{
+    font-family: "Raleway",sans-serif;
+}
+body{
+    
+    text-align: center;
+}
+
+.header{
+    margin: 3px;
+    display: grid;
+    column-gap: 10px;
+    box-shadow: 0 0 10px rgb(79, 127, 189),0 0 20px blue ;
+    grid-template-columns: auto auto auto;
+    width: 50%;
+    margin: 0 auto;
+    background-color: white;
+}
+.name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+label{
+    
+    font-size: 22px;
+    font-weight:bolder;
+    padding: 12px;
+    border-radius: 15px;
+    color: white;  
+    box-shadow: 0 0 5px rgb(26, 164, 219),0 0 10px rgb(228, 77, 233) ;
+}
+
+form{
+    margin: 30px;
+}
+
+select{
+    padding: 10px;
+    border-radius: 15px;
+    margin: 0 10px;
+    box-shadow: 0 0 5px rgb(72, 69, 226),0 0 20px rgb(75, 183, 245) ;
+
+}
+
+select option{
+    background-color: #04528a;
+    color: rgb(254, 255, 255);
+    
+}
+input[type="text"],input[type="email"]{
+    margin: 15px 0;
+    padding: 12px 12px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 10px rgb(79, 127, 189),0 0 20px blue ;
+}
+select{
+    margin: 25px;
+    text-align: center;
+}
+
+
+input[type='color']{
+    display: inline;
+    height: 40px;
+    width: 50px;
+    padding: 1px;
+    text-align: center;
+    
+}
+input[type='file']::content{
+    border-radius: 20px;
+}
+input{
+    margin: 10px;
+}
+.btn{
+
+    padding: 12px;
+    background-color: #04528a;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    transition-duration: 0.4s;
+
+}
+
+.emailform{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.emailform textarea{
+    flex-basis: 100%;
+    width: auto;
+    border-radius: 10px;
+    padding: 15px;
+}
+.emailform div{
+    display: flex;
+    flex-direction: row;
+}
+.emailform button{
+    width: 100px;
+    margin: 20px;
+    
+}
+.emailform div input{
+    margin: 15px;
+}
+
+
+
+
+/* For mobile screens */
+@media only screen and (max-width: 620px){
+    body{
+        text-align: center;
+        overflow-y: scroll;
+    }
+    .header{
+        margin: 3px;
+        display: grid;
+        column-gap: 10px;
+        box-shadow:0 0 10px blue ;
+        grid-template-columns: auto auto auto;
+        width: 100%;
+        margin: 0 auto;
+        background-color: white;
+    }
+    .header img{
+        height: 60px;
+        width: 60px;
+    }
+    .header h4{
+        font-size: 12px;
+    }
+    form div{
+        display: grid;
+        grid-template-columns: auto;
+        column-gap: 20px;
+        text-align: center;
+    }
+    select{
+        width: 50%;
+        margin: 10px auto;
+        display: inline-block;
+        text-align: center;
+    }
+    
+    label{
+    margin: 20px;
+    font-size: 22px;
+    font-weight:bolder;
+    padding: 12px;
+    border-radius: 15px;
+    color: white;  
+    box-shadow: 0 0 5px rgb(26, 164, 219),0 0 10px rgb(228, 77, 233) ;
+    }
+
+    input{
+    display: inline-block;
+    margin: 0 auto;
+    left: 10px;
+    text-align: center;
+}
+    #font-family{
+        margin-top: 38px;
+    }
+
+    .emailform div{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    
+
+    
+}
+.btn:hover{
+    background-color: #045e9e;
+    transform: scale(1.1);
+}
+
+iframe{
+    margin: 15px;
+    box-shadow: 0 0 5px rgb(26, 164, 219),0 0 10px rgb(228, 77, 233) ;
+}
+
+
+.colors{
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.colors label{
+    font-size: 20px;
+}
+
+input[type="number"]{
+    height: 30px;
+    width: 60px;
+    text-align: center;
+}
+
+
+
+
+.content-options .content-options-radio{
+    flex-direction: row;
+}
+.content-option-requirements{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    height: auto;
+    width: auto;
+    
+}
+#form h1,h3{
+    color: aliceblue;
+    text-shadow: 0 0 5px rgb(72, 69, 226),0 0 8px rgb(24, 105, 151) ;
+}
+
+#form img{
+    border-radius: 10px;
+}
+button{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(30, 75, 126);
+    color: white;
+    border: none;
+    margin: 16px;
+    text-transform: capitalize;
+    transition-duration: 0.3s;
+    box-shadow: 0 0 5px rgb(72, 69, 226),0 0 8px rgb(24, 105, 151) ;
+}
+button:hover{
+
+    transform: scale(1.1) ;
+
+
+}
+.content-options-display{
+    margin: 20px;
+}
+.content-options-radio div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content-options-radio label{
+    font-size: 20px;
+}
+#required-home-elements{
+    color: aliceblue;
+}
+
+
+
+
+.sbbutton{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+    color: rgb(8, 65, 129);
+    border: 3px solid rgb(26, 95, 173);
+    font-weight: 900;
+    margin: 16px;
+    text-transform: capitalize;
+    transition-duration: 0.3s;
+    box-shadow: 0 0 5px rgb(72, 69, 226),0 0 8px rgb(24, 105, 151) ;
+}
+.sbbutton:hover{
+    background-color: rgb(8, 65, 129);
+    color: white;
+    border: 3px solid rgb(220, 227, 235);
+    transform: scale(1.1);
+}
+.fb{
+    color: aliceblue;
+    text-shadow: 0 0 5px rgb(72, 69, 226),0 0 8px rgb(24, 105, 151) ;
+}
+
+.loader{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* display: none; */
+    background-color:rgb(8, 65, 129);
+    overflow: hidden;
+    z-index: 999;
+}
+.loader img{
+    height: 130px;
+}
+.loader img:nth-child(2){
+    height: 80px;
+    transform: rotate(30deg);
+    margin-top: 40px;
+}
+.loader img{
+    animation-name: spin ;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    100%{
+        transform: rotate(360deg);
+    }
+    
+}
+.act-btn{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}

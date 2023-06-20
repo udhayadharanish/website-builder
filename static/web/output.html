@@ -1,0 +1,83 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <link rel="stylesheet" href="styleOutput.css">
+            
+        </head> 
+        <script>
+            function myfunc(){
+                
+                document.querySelector(".dropdown_menu").classList.toggle("open");
+                console.log(document.querySelector(".dropdown_menu").classList.contains("open"));
+                if(document.querySelector(".dropdown_menu").classList.contains("open")){
+                    document.querySelector('.toggle_btn i').className = "fa-solid fa-xmark";
+                    console.log(document.querySelector('.toggle_btn i').className);
+                }
+                else{
+                    document.querySelector('.toggle_btn i').className = "fa-solid fa-bars";
+                    console.log(document.querySelector('.toggle_btn i').className);
+
+                }
+                
+            }
+        </script>
+          <body>
+                   
+        
+            <header>
+                <div class="navbar">
+                    <div class="logo"><img src="../design/logo.jpg" alt="" height="25px"></div>
+                    <ul class="links">
+            
+                <li><a href="Contact me">Contact me</a></li>
+                
+                <li><a href="About me">About me</a></li>
+                
+                <li><a href="Web development">Web development</a></li>
+                
+            </ul>
+            
+                    <div>
+                        <button class="toggle_btn" onclick="myfunc()"><i class="fa-solid fa-bars"></i></button>
+                    </div>
+                </div>
+                <div class="dropdown_menu">
+            
+            
+            
+                <li><a href="Contact me">Contact me</a></li>
+                
+                <li><a href="About me">About me</a></li>
+                
+                <li><a href="Web development">Web development</a></li>
+                
+                    </div>
+            </header>
+            
+            
+                
+                <div class="home1">
+        
+                    <h1>U-Code</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, tempora recusandae repellendus reprehenderit fugit quisquam suscipit adipisci itaque at a iste vero vitae quas fuga exercitationem magni, debitis veritatis. Velit?</p>
+                    
+                    
+                </div>
+                
+            
+            <div class='blocks' id = 'blocks'>
+              
+            
+        </div>
+        
+        
+            
+            </body>
+</html>
+            

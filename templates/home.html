@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var count = 2;
+    function addSelect(){
+        var container = document.getElementById("container");
+        var div = document.createElement("div")
+        div.id = `container${count}`
+        var select = document.createElement("select");
+        select.name = `field${count}`;
+        count++;
+
+        var option1 = document.createElement("option");
+        option1.value = "paragraph";
+        option1.innerHTML = "Paragraph";
+
+        var option2 = document.createElement("option");
+        option2.value = "Heading 1";
+        option2.innerHTML = "Heading 1";
+
+        var option3 = document.createElement("option");
+        option3.value = "Sub Heading";
+        option3.innerHTML = "Sub Heading";
+
+        var option4 = document.createElement("option");
+        option4.value = "Image";
+        option4.innerHTML = "Image";
+
+        var option5 = document.createElement("option");
+        option5.value = "Button";
+        option5.innerHTML = "Button";
+
+        select.append(option1);
+        select.append(option2);
+        select.append(option3);
+        select.append(option4);
+        select.append(option5);
+        
+        div.appendChild(select)
+        
+        container.appendChild(div)
+    }
+
+    document.addEventListener("DOMContentLoaded",function() {
+        var select = document.getElementById("field1")
+        if(select.value == "paragraph"){
+            var inputP = document.createElement("input")
+            inputP.type = "text";
+            inputP.placeholder = "Enter paragraph"
+
+            document.getElementById("container1").append(inputP);
+        }
+        else if(select.value == "heading1"){
+            var inputP = document.createElement("input")
+            inputP.type = "text";
+            inputP.placeholder = "Enter Heading"
+            
+            document.getElementById("container1").append(inputP);
+        }
+    })
+
+
+
+</script>
+<body>
+    <form action="/generate" method="post" >
+        <div id="container">
+            <div id="container1">
+                <select  id="select" name="field1">      
+                    <option value="paragraph">Paragraph</option>
+                    <option value="heading1">Heading 1</option>
+                    <option value="heading2">Sub Heading</option>
+                    <option value="Image">Image</option>
+                    <option value="buttton">Button</option>
+                </select>
+            </div>
+            
+        </div>
+        
+        
+        <input type="submit">
+    </form>
+    <button onclick="addSelect()">Add Elements</button>
+
+
+
+
+
+
+</body>
+</html>

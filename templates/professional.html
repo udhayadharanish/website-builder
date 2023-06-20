@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U-Code</title>
+    <link rel="icon" type="image/x-icon" href="static/Images/logo.png">
+    <!-- <link rel="stylesheet" href="static/style/style.css">
+    <link rel="stylesheet" href="static/style/styleProfessional.css"> -->
+    <link rel="stylesheet" href="static/style/test.css">
+</head>
+<style>
+  .content-options{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    color: aliceblue;
+  }
+  input[type="text"]{
+    margin: 10px;
+  }
+  
+    body{
+      background-image: url("static/Images/bg-main.jpg");
+      background-attachment: fixed;
+      
+    }
+    label{
+    margin: 20px;
+    font-size: 22px;
+    font-weight:bolder;
+    padding: 12px;
+    border-radius: 15px;
+    color: white;  
+    box-shadow:none;
+    }
+
+    .image-select {
+  display: grid;
+  grid-template-columns:auto auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-select input[type="radio"] {
+  display: none;
+}
+
+.image-select label {
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.content-options{
+  align-items: center;
+}
+.image-select label img {
+  /* Adjust the size as per your requirement */
+  height: 200px; /* Adjust the size as per your requirement */
+  border: 2px solid rgb(216, 214, 214);
+  transition: all 0.2s ease;
+  
+}
+
+.image-select input[type="radio"]:checked + label img {
+    box-shadow: 0 0 10px rgb(79, 127, 189),0 0 20px blue ; /* Add a border color or any other styling to indicate selection */
+  padding: 5px;
+  transform: scale(0.95);
+}
+label{
+  color: aliceblue;
+}
+#bgblur{
+  height: 20px;
+  width: 20px;
+}
+.content-option-requirements{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(13, 121, 121);
+    padding: 20px;
+    height: auto;
+    width: auto;
+    border-radius: 10px;
+    
+}
+.content-options-radio input{
+    flex-grow: 1;
+    height: 30px;
+    width: 30px;
+}
+.content-option-display img{
+  height: 300px;
+  width: auto;
+  border-radius: 10px;
+}
+
+
+.content-options-radio{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.content-options-radio{
+  flex-basis: 100%;
+}
+.content-option-requirements input[type="file"]::file-selector-button{
+  padding: 5px;
+  border-radius: 4px;
+  color: white;
+  background-color: rgb(26, 126, 173);
+  margin: 5px;
+}
+@media (max-width:650px) {
+  .image-select {
+    margin: 0;
+    padding: 0;
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto;
+  justify-content: space-around;
+  align-items: center;
+
+}
+.content-option-display img{
+  height: 150px;
+  width: auto;
+}
+
+.image-select label img{
+  height: 150px;
+}
+.content-options-radio label{
+  font-size: 15px;
+}
+.content-options-radio{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+}
+}
+
+
+</style>
+
+<script>
+
+var Homestatus = "";
+function displayStyle(){
+  const selectedRadio = document.querySelector('input[name="nav-select"]:checked');
+  const selectedOption = selectedRadio.value;
+  if(selectedOption == "Style1" || selectedOption == "Style2"){
+    document.querySelector("#style1-nav").style.display = "block";
+  }
+  else{
+    document.querySelector("#style1-nav").style.display = "none";
+  }
+  
+  
+}
+
+
+// For creating elements for home page design
+
+function createHomeElements(){
+  var requiredHome = document.querySelector("#required-home-elements");
+  var HomeStyle =  document.querySelector('input[name="home-select"]:checked');
+  console.log(requiredHome);
+  console.log(HomeStyle.value);
+  requiredHome.innerHTML = "";
+  var a = document.createElement("h3").innerHTML = "Requirements for selected Style :";
+  requiredHome.append(a);
+  requiredHome.append(document.createElement("br"));
+
+
+  if(HomeStyle.value == "Style1"){
+    Homestatus = "Style1";
+    var oneliner = document.createElement("input");
+    oneliner.type = "text";
+    oneliner.name = "home-style1-oneliner";
+    oneliner.id = "home-style1-oneliner";
+    oneliner.placeholder = "Oneliner About you/your organization";
+    oneliner.setAttribute("required","true");
+    var about = document.createElement("input");
+    about.type = "text";
+    about.name = "home-style1-about";
+    about.id = "home-style1-about";
+    about.placeholder = "Brief About you/your organization";
+    about.setAttribute("required","true");
+
+    requiredHome.append(oneliner);
+    requiredHome.append(about);
+  }
+
+
+  else if(HomeStyle.value == "Style2"){
+    Homestatus = "Style2";
+    var imageStyle2 = document.createElement("input");
+    imageStyle2.type = "file";
+    imageStyle2.name = "home-style2-image";
+    imageStyle2.id = "home-style2-image";
+    imageStyle2.placeholder = "Oneliner About you/your organization";
+    imageStyle2.setAttribute("required","true");
+    var heading = document.createElement("input");
+    heading.type = "text";
+    heading.name = "home-style2-heading";
+    heading.id = "home-style2-heading";
+    heading.placeholder = "Heading";
+
+    // heading.setAttribute("required","true");
+    var about = document.createElement("input");
+    about.type = "text";
+    about.name = "home-style2-about";
+    about.id = "home-style2-about";
+    about.placeholder = "Brief About you/your organization";
+    about.setAttribute("required","true");
+
+    requiredHome.append(imageStyle2);
+    requiredHome.append(heading);
+    requiredHome.append(about);
+  }
+
+  else if(HomeStyle.value == "Style3"){
+    Homestatus = "Style3";
+    var imageStyle3 = document.createElement("input");
+    imageStyle3.type = "file";
+    imageStyle3.name = "home-style3-image";
+    imageStyle3.id = "home-style3-image";
+    imageStyle3.placeholder = "Oneliner About you/your organization";
+    imageStyle3.setAttribute("required","true");
+
+    var heading = document.createElement("input");
+    heading.type = "text";
+    heading.name = "home-style3-heading";
+    heading.id = "home-style3-heading";
+    heading.placeholder = "Heading";
+
+    var about = document.createElement("input");
+    about.type = "text";
+    about.name = "home-style3-about";
+    about.id = "home-style3-about";
+    about.placeholder = "Brief About you/your organization";
+    about.setAttribute("required","true");
+
+    requiredHome.append(heading);
+    requiredHome.append(about);
+    requiredHome.append(imageStyle3);
+  }
+
+}
+
+function createElementsNav() {
+    console.log("add");
+    var required = document.querySelector("#required-nav-options");
+    var optionCount = document.querySelector("#nav-option-count").value;
+    count = 1;
+    console.log(optionCount);
+    required.innerHTML="";
+    for(var i =0;i<optionCount;i++){
+      var input = document.createElement("input");
+      input.type = 'text';
+      input.placeholder = `option${count}`;
+      input.name = `nav-option${count}`;
+      input.id = `nav-option${count}`;
+      input.setAttribute("required","true");
+      required.append(input);
+      count++;
+    }
+    required.append(document.createElement("br"));
+    var label1 = document.createElement("label");
+    label1.innerHTML = "Background color (Nav)";
+    var bgcolor = document.createElement("input");
+    bgcolor.type = "color";
+    bgcolor.id = "nav-bgcolor";
+    bgcolor.name = "nav-bgcolor";
+    bgcolor.value = document.querySelector("#background-color").value;
+    required.append(label1);
+    required.append(bgcolor);
+    var label2 = document.createElement("label");
+    label2.innerHTML = "Font color (Nav)";
+    var fcolor = document.createElement("input");
+    fcolor.type = "color";
+    fcolor.id = "nav-font-color";
+    fcolor.name = "nav-font-color";
+    fcolor.value =  document.querySelector("#font-color").value;;
+    required.append(label2);
+    required.append(fcolor);
+
+  }
+
+  // for showing respected style for navigation selection process
+  document.addEventListener("change",displayStyle);
+  
+  // for background select home page
+  document.addEventListener("change",function(){
+    var select = document.querySelector("#background-select-home").value;
+    if(select == "image"){
+      document.querySelector("#bgblur").style.display = "block";
+      document.querySelector("#bgblurP").style.display = "block";
+      document.querySelector("#background-selected").type = "file";
+      
+    }
+    else{
+      document.querySelector("#bgblur").style.display = "none";
+      document.querySelector("#bgblurP").style.display = "none";
+      document.querySelector("#background-selected").type = "color";
+    }
+  })
+  document.addEventListener("change",function(){
+    var HomeStyle =  document.querySelector('input[name="home-select"]:checked');
+    if(HomeStyle.value != Homestatus){
+      createHomeElements();
+    }
+  });
+  var contentOption = 0;
+
+  document.addEventListener("DOMContentLoaded",function(){
+    var countInput = document.createElement("input");
+    countInput.name = "totalBlock";
+    countInput.id = "totalBlock";
+    countInput.type = "text";
+    countInput.style.display = "none";
+    document.querySelector("#form").append(countInput);
+  })
+  function blockCount(){
+    var isValid = form.checkValidity();
+    if(!isValid){
+      alert("Fill all the requirements !");
+    }
+    else{
+      document.querySelector("#totalBlock").value = `${contentOption}`;
+    }
+    
+    
+  }
+  
+
+  
+  
+  
+  
+  
+  function addOption(){
+    
+    var form = document.getElementById('form');
+    var isValid = form.checkValidity();
+    console.log(isValid);
+    if(isValid){
+        var div = document.createElement("div");
+        var divInput = document.createElement("div");
+        divInput.className = "content-options-radio";
+    div.id = `content-option${contentOption}`;
+    
+    
+    div.className = `content-options`
+    var label = document.createElement("label");
+    label.innerHTML = "Style 1";
+    var input = document.createElement("input");
+    input.type = "radio";
+    input.name = `content-option${contentOption}`;
+    input.value = "Block1";
+    input.setAttribute("required","true");
+    var label2 = document.createElement("label");
+    label2.innerHTML = "Style 2"
+    var input2 = document.createElement("input");
+    input2.type = "radio";
+    input2.name = `content-option${contentOption}`;
+    input2.value = "Block2";
+    input2.setAttribute("required","true");
+    var label3 = document.createElement("label");
+    label3.innerHTML = "Style 3"
+    var input3 = document.createElement("input");
+    input3.type = "radio";
+    input3.name = `content-option${contentOption}`;
+    input3.value = "Block3";
+    input3.setAttribute("required","true");
+    var label4 = document.createElement("label");
+    label4.innerHTML = "Style 4"
+    var input4 = document.createElement("input");
+    input4.type = "radio";
+    input4.name = `content-option${contentOption}`;
+    input4.value = "Home1";
+    input4.setAttribute("required","true");
+    var label5 = document.createElement("label");
+    label5.innerHTML = "Style 5"
+    var input5 = document.createElement("input");
+    input5.type = "radio";
+    input5.name = `content-option${contentOption}`;
+    input5.value = "Home2";
+    input5.setAttribute("required","true");
+    var label6 = document.createElement("label");
+    label6.innerHTML = "Style 6"
+    var input6 = document.createElement("input");
+    input6.type = "radio";
+    input6.name = `content-option${contentOption}`;
+    input6.value = "Home3";
+    input6.setAttribute("required","true");
+    
+    var image = document.createElement("div");
+    image.id = `content-option${contentOption}-display`;
+    image.className = `content-option-display`;
+    image.style.height = "auto";
+    image.style.width = "auto";
+
+    var requiredContent = document.createElement("div");
+    requiredContent.id = `content-option${contentOption}-requirements`;
+    requiredContent.className = `content-option-requirements`;
+    
+    requiredContent.style.height = "auto";
+    requiredContent.style.width = "auto";
+
+    var button = document.createElement("button");
+    button.type = "button";
+    button.id = `content-option${contentOption}-button`;
+    button.addEventListener("click",requireDislayBlock);
+    button.innerText = "submit style";
+    contentOption++;
+
+    var divRadio1 =  document.createElement("div");
+    var divRadio2 =  document.createElement("div");
+    var divRadio3 =  document.createElement("div");
+    var divRadio4 =  document.createElement("div");
+    var divRadio5 =  document.createElement("div");
+    var divRadio6 =  document.createElement("div");
+
+    divRadio1.append(label);
+    divRadio1.append(input);
+    divRadio2.append(label2);
+    divRadio2.append(input2);
+    divRadio3.append(label3);
+    divRadio3.append(input3);
+    divRadio4.append(label4);
+    divRadio4.append(input4);
+    divRadio5.append(label5);
+    divRadio5.append(input5);
+    divRadio6.append(label6);
+    divRadio6.append(input6);
+    divInput.append(divRadio1);
+    divInput.append(divRadio2);
+    divInput.append(divRadio3);
+    divInput.append(divRadio4);
+    divInput.append(divRadio5);
+    divInput.append(divRadio6);
+    div.append(divInput);
+    div.append(image);
+    div.append(requiredContent);
+    // div.append(button);
+    document.querySelector(".content").append(div);
+    
+    }
+    else{
+        alert("Kindly fill all required field");
+    }
+    
+  }
+
+   
+
+  function removeOption(){
+    var content = document.querySelector(".content");
+    var id = `content-option${contentOption-1}`;
+    var dlt = document.querySelector(`#${id}`);
+    if(document.querySelector(`input[name=${id}]:checked`) != null){
+      console.log("not nul");
+      if(document.querySelector(`input[name=${id}]:checked`).value == "Block1"){
+        block1--;
+      }
+      if(document.querySelector(`input[name=${id}]:checked`).value == "Block2"){
+        block2--;
+      }
+      if(document.querySelector(`input[name=${id}]:checked`).value == "Block3"){
+        block3--;
+      }
+      if(document.querySelector(`input[name=${id}]:checked`).value == "Home1"){
+        home1--;
+      }
+      if(document.querySelector(`input[name=${id}]:checked`).value == "Home2"){
+        home2--;
+      }
+      if(document.querySelector(`input[name=${id}]:checked`).value == "Home3"){
+        home3--;
+      }
+    }
+    // console.log(document.querySelector(`input[name=${id}]:checked`));
+    
+    content.removeChild(dlt);
+    var require = document.querySelector(`#${id}-requirements`);
+    
+    contentOption--;
+    statusDict[`${id}-requirements`] = "start";
+  }
+  var addImageCount = 1;
+
+  function addImageInput(where,id,name){
+    console.log("image added in :" + where);
+    var image = document.createElement("input");
+    image.type = "file";
+    image.id = id+addImageCount;
+    image.name = name+addImageCount;
+    image.setAttribute("required",'true');
+    where.append(image);
+    addImageCount++;
+  }
+  var statusDict = {};
+
+  function imageDisplayBlock(){
+
+    var blockOptions= document.querySelectorAll(".content-options");
+    for(var i=0;i<blockOptions.length;i++){
+
+      var RadioValue = document.querySelector(`input[name='${blockOptions[i].id}']:checked`);
+      var imageDiv = document.querySelector(`#${blockOptions[i].id}-display`);
+      imageDiv.innerHTML = "";
+      var image = document.createElement("img");
+
+      if(RadioValue.value == "Block1"){
+        image.src = "static/Images/blockdesign1.png";
+      }
+      else if(RadioValue.value == "Block2"){
+        image.src = "static/Images/blockdesign2.png";
+      }
+      else if(RadioValue.value == "Block3"){
+        image.src = "static/Images/blockdesign3.png";
+      }
+      else if(RadioValue.value == "Home1"){
+        image.src = "static/Images/homedesign1.png";
+      }
+      else if(RadioValue.value == "Home2"){
+        image.src = "static/Images/homedesign2.png";
+      }
+      else if(RadioValue.value == "Home3"){
+        image.src = "static/Images/homedesign3.png";
+      }
+      imageDiv.append(image);
+    }
+
+
+  }
+  var block1 = 1;
+  var block2 = 1;
+  var block3 = 1;
+  var block3Image = 0;
+  var home1 = 1;
+  var home2 = 1;
+  var home3 = 1;
+  var buttonCount = 1;
+  document.addEventListener("change",imageDisplayBlock);
+  document.addEventListener("change",function(){
+    document.querySelector("#background-selected").value = document.querySelector("#background-color").value;
+  })
+
+
+
+
+
+  function requireDislayBlock(){
+
+    var blockOptions= document.querySelectorAll(".content-options");
+
+    for(var i=0;i<blockOptions.length;i++){
+      console.log(blockOptions[i]);
+      console.log(statusDict);
+      var id = blockOptions[i].id;
+      var RadioValue = document.querySelector(`input[name='${blockOptions[i].id}']:checked`);
+      var require = document.querySelector(`#${blockOptions[i].id}-requirements`);
+      var id = blockOptions[i].id;
+      // console.log(RadioValue.value);
+        function Button(){
+          
+            if(statusDict[`${id}-button`] == null){
+              statusDict[`${id}-button`] = 0;
+            }
+
+            var buttonAdd = document.createElement("button");
+            buttonAdd.type  = "button";
+            buttonAdd.innerHTML = "button Add"
+            require.append(buttonAdd);
+            buttonAdd.addEventListener("click",function(){
+              var buttonCount = statusDict[`${id}-button`];
+              console.log("Add button");
+              var btn = document.createElement("div");
+              btn.id = `${id}-button${buttonCount}`;
+              statusDict[`${id}-button`]++;
+              var link = document.createElement("input");
+              link.placeholder = "Link";
+              link.type = "text";
+              link.name = `${id}-link${statusDict[`${id}-button`]}`;
+              var linkname = document.createElement("input");
+              linkname.type = "text";
+              linkname.placeholder = "Link Name";
+              linkname.name = `${id}-linkname${statusDict[`${id}-button`]}`;
+              btn.append(link);
+              btn.append(linkname);
+              document.querySelector(`#${id}-requirements`).append(btn);
+              
+            })
+            
+            
+
+            var buttonRemove = document.createElement("button");
+            buttonRemove.type = "button";
+            buttonRemove.innerHTML = "remove button";
+            require.append(buttonRemove);
+            buttonRemove.addEventListener("click",function(){
+              statusDict[`${id}-button`]--;
+              console.log(statusDict);
+              console.log("remove button");
+              var div = document.querySelector(`#${id}-requirements`);
+              console.log(div)
+              var r = document.querySelector(`#${id}-button${statusDict[`${id}-button`]}`);
+              div.removeChild(r);
+              
+            })
+        }
+      if(RadioValue.value == "Block1" && statusDict[require.id] != "Block1"){
+          require.innerHTML = "";
+          console.log(require.id + ":Block1");
+          require.innerHTML = "Block1";
+
+          var inputText = document.createElement("input");
+          inputText.type = "text";
+          inputText.placeholder = "Text area"
+          inputText.name = `${blockOptions[i].id}-block1-text${block1}`;
+          inputText.id = `${blockOptions[i].id}-block1-text${block1}`;
+          inputText.setAttribute("required","true");
+
+          var inputImage = document.createElement("input");
+          inputImage.type = "file";
+          inputImage.name = `${blockOptions[i].id}-block1-image${block1}`;
+          inputImage.id = `${blockOptions[i].id}-block1-image${block1}`;
+          inputImage.setAttribute("required","true");
+
+          var bg = document.createElement("h4");
+          bg.innerHTML = "Background color";
+
+          var inputColorBG = document.createElement("input");
+          inputColorBG.type = "color";
+          inputColorBG.value = document.querySelector("#background-color").value;
+          inputColorBG.name =  `${blockOptions[i].id}-block1-bgcolor${block1}`;
+
+          var fc = document.createElement("h4");
+          fc.innerHTML = "Font color";
+
+          var inputColorFont = document.createElement("input");
+          inputColorFont.type = "color";
+          inputColorFont.value = document.querySelector("#font-color").value;
+          inputColorFont.name =  `${blockOptions[i].id}-block1-fontcolor${block1}`;
+
+
+
+
+          
+
+          require.append(inputText);
+          require.append(inputImage);
+          require.append(bg);
+          require.append(inputColorBG);
+          require.append(fc);
+          require.append(inputColorFont);
+          Button();
+          block1++;
+          if(statusDict[require.id] == "Block2"){
+            block2--;
+          }
+          if(statusDict[require.id] == "Block3"){
+            block3--;
+          }
+          if(statusDict[require.id] == "Home1"){
+            home1--;
+          }
+          if(statusDict[require.id] == "Home2"){
+            home2--;
+          }
+          if(statusDict[require.id] == "Home3"){
+            home3--;
+          }
+
+          statusDict[require.id] = "Block1";
+
+      }
+      else if(RadioValue.value == "Block2" && statusDict[require.id] != "Block2"){
+          require.innerHTML = "";
+          console.log(require.id + ":Block2");
+          require.innerHTML = "Block2";
+          
+
+          var inputText = document.createElement("input");
+          inputText.type = "text";
+          inputText.placeholder = "Text area"
+          inputText.name = `${blockOptions[i].id}-block2-text${block2}`;
+          inputText.id = `${blockOptions[i].id}-block2-text${block2}`;
+          inputText.setAttribute("required","true");
+
+
+          var inputImage = document.createElement("input");
+          inputImage.type = "file";
+          inputImage.name = `${blockOptions[i].id}-block2-image${block2}`;
+          inputImage.id = `${blockOptions[i].id}-block2-image${block2}`;
+          inputImage.setAttribute("required","true");
+          
+          var bg = document.createElement("h4");
+          bg.innerHTML = "Background color";
+          
+          var inputColorBG = document.createElement("input");
+          inputColorBG.type = "color";
+          inputColorBG.value = document.querySelector("#background-color").value;
+          inputColorBG.name =  `${blockOptions[i].id}-block2-bgcolor${block2}`;
+
+          var fc = document.createElement("h4");
+          fc.innerHTML = "Font color";
+
+          var inputColorFont = document.createElement("input");
+          inputColorFont.type = "color";
+          inputColorFont.value = document.querySelector("#font-color").value;
+          inputColorFont.name =  `${blockOptions[i].id}-block2-fontcolor${block2}`;
+          
+          require.append(inputImage);
+          require.append(inputText);
+          require.append(bg);
+          require.append(inputColorBG);
+          require.append(fc);
+          require.append(inputColorFont);
+          Button();
+          block2++;
+          if(statusDict[require.id] == "Block1"){
+            block1--;
+          }
+          if(statusDict[require.id] == "Block3"){
+            block3--;
+          }
+          if(statusDict[require.id] == "Home1"){
+            home1--;
+          }
+          if(statusDict[require.id] == "Home2"){
+            home2--;
+          }
+          if(statusDict[require.id] == "Home3"){
+            home3--;
+          }
+
+          statusDict[require.id] = "Block2";
+      }
+      else if(RadioValue.value == "Block3" && statusDict[require.id] != "Block3"){
+          console.log(require.id + ":Block3");
+           
+          require.innerHTML = "Block3";
+          var div = document.createElement("div");
+
+          var imageAdd = document.createElement("button");
+          imageAdd.type = "button";
+          imageAdd.name = `${blockOptions[i].id}-block-button${block3}`;
+          imageAdd.innerText = "Add image";
+          require.append(imageAdd);
+
+          var imageRemove = document.createElement("button");
+          imageRemove.innerHTML = "Remove image";
+          imageRemove.type = "button";
+          require.append(imageRemove);
+          
+          statusDict[id+"-imagecount"] = block3Image;
+          imageAdd.addEventListener("click",function(){
+            
+            var imageInput = document.createElement("input");
+            imageInput.type = "file";
+            imageInput.name = `${id}-block3-image${statusDict[`${id}-imagecount`]+1}`;
+            imageInput.id = `${id}-block3-image${statusDict[`${id}-imagecount`]+1}`;
+            imageInput.setAttribute("required","true");
+
+            
+
+            statusDict[`${id}-imagecount`]++;
+            require.append(imageInput);
+          })
+
+
+          imageRemove.addEventListener("click",function(){
+              block3Image = statusDict[id+"-imagecount"];
+              console.log(block3Image);
+              console.log(`${id}-block3-image${block3Image}`);
+              
+              var element = document.querySelector(`#${id}-block3-image${block3Image}`);
+              console.log(element);
+              require.removeChild(element);
+              // require.remove(element);
+              statusDict[id+"-imagecount"]--;
+          })
+
+          if(statusDict[require.id] == "Block2"){
+            block2--;
+            }
+            if(statusDict[require.id] == "Block1"){
+              block1--;
+            }
+            if(statusDict[require.id] == "Home1"){
+              home1--;
+            }
+            if(statusDict[require.id] == "Home2"){
+              home2--;
+            }
+            if(statusDict[require.id] == "Home3"){
+              home3--;
+            }
+
+          Button();
+          statusDict[require.id] = "Block3";
+          
+
+      }
+      else if(RadioValue.value == "Home1" && statusDict[require.id] != "Home1"){
+          console.log(require.id + ":Home1");
+          require.innerHTML = "Home1";
+          
+
+          var inputText = document.createElement("input");
+          inputText.type = "text";
+          inputText.name = `${blockOptions[i].id}-home1-oneliner${home1}`;
+          inputText.id = `${blockOptions[i].id}-home1-oneliner${home1}`;
+          inputText.placeholder = "one liner";
+          inputText.setAttribute("required","true");
+
+
+          var inputAbout = document.createElement("input");
+          inputAbout.type = "text";
+          inputAbout.name = `${blockOptions[i].id}-home1-about${home1}`;
+          inputAbout.id = `${blockOptions[i].id}-home1-about${home1}`;
+          inputAbout.placeholder = "about";
+          inputAbout.setAttribute("required","true");
+
+
+          var inputImage = document.createElement("input");
+          inputImage.type = "file";
+          inputImage.name = `${blockOptions[i].id}-home1-image${home1}`;
+          inputImage.id = `${blockOptions[i].id}-home1-image${home1}`;
+          inputImage.setAttribute("required","true");
+
+          
+
+          require.append(inputImage);
+          require.append(inputText);
+          require.append(inputAbout);
+          Button();
+          home1++;
+          if(statusDict[require.id] == "Block2"){
+            block2--;
+            }
+            if(statusDict[require.id] == "Block1"){
+              block1--;
+            }
+            if(statusDict[require.id] == "Block3"){
+              block3--;
+            }
+            if(statusDict[require.id] == "Home2"){
+              home2--;
+            }
+            if(statusDict[require.id] == "Home3"){
+              home3--;
+            }
+          statusDict[require.id] = "Home1";
+
+      }
+      else if(RadioValue.value == "Home2" && statusDict[require.id] != "Home2"){
+          console.log(require.id + ":Home2");
+          require.innerHTML = "Home2";
+          statusDict[require.id] = "Home2";
+
+          var inputHead = document.createElement("input");
+          inputHead.type = "text";
+          inputHead.name = `${blockOptions[i].id}-home2-heading${home2}`;
+          inputHead.id = `${blockOptions[i].id}-home2-heading${home2}`;
+          inputHead.placeholder = "Heading";
+          inputHead.setAttribute("required","true");
+
+
+          var inputAbout = document.createElement("input");
+          inputAbout.type = "text";
+          inputAbout.name = `${blockOptions[i].id}-home2-about${home2}`;
+          inputAbout.id = `${blockOptions[i].id}-home2-about${home2}`;
+          inputAbout.placeholder = "About";
+          inputAbout.setAttribute("required","true");
+
+
+          var inputImage = document.createElement("input");
+          inputImage.type = "file";
+          inputImage.name = `${blockOptions[i].id}-home2-image${home2}`;
+          inputImage.id = `${blockOptions[i].id}-home2-image${home2}`;
+          inputImage.setAttribute("required","true");
+
+          
+
+          require.append(inputImage);
+          require.append(inputHead);
+          require.append(inputAbout);
+          Button();
+          home2++;
+            if(statusDict[require.id] == "Block2"){
+            block2--;
+            }
+            if(statusDict[require.id] == "Block1"){
+              block1--;
+            }
+            if(statusDict[require.id] == "Home1"){
+              home1--;
+            }
+            if(statusDict[require.id] == "Block3"){
+              block3--;
+            }
+            if(statusDict[require.id] == "Home3"){
+              home3--;
+            }
+          statusDict[require.id] = "Home2";
+      }
+      else if(RadioValue.value == "Home3" && statusDict[require.id] != "Home3"){
+          console.log(require.id + ":Home3");
+          require.innerHTML = "Home3";
+          statusDict[require.id] = "Home3";
+
+          var inputHead = document.createElement("input");
+          inputHead.type = "text";
+          inputHead.name = `${blockOptions[i].id}-home3-heading${home3}`;
+          inputHead.id = `${blockOptions[i].id}-home3-heading${home3}`;
+          inputHead.placeholder = "Heading";
+          inputHead.setAttribute("required","true");
+
+
+          var inputAbout = document.createElement("input");
+          inputAbout.type = "text";
+          inputAbout.name = `${blockOptions[i].id}-home3-about${home3}`;
+          inputAbout.id = `${blockOptions[i].id}-home3-about${home3}`;
+          inputAbout.placeholder = "About";
+          inputAbout.setAttribute("required","true");
+
+
+          var inputImage = document.createElement("input");
+          inputImage.type = "file";
+          inputImage.name = `${blockOptions[i].id}-home3-image${home3}`;
+          inputImage.id = `${blockOptions[i].id}-home3-image${home3}`;
+          inputImage.setAttribute("required","true");
+
+          
+
+          require.append(inputHead);
+          require.append(inputAbout);
+          require.append(inputImage);
+          home3++;
+          if(statusDict[require.id] == "Block2"){
+            block2--;
+            }
+            if(statusDict[require.id] == "Block1"){
+              block1--;
+            }
+            if(statusDict[require.id] == "Home1"){
+              home1--;
+            }
+            if(statusDict[require.id] == "Home2"){
+              home2--;
+            }
+            if(statusDict[require.id] == "Block3"){
+              block3--;
+            }
+          Button();
+      }
+      
+
+
+
+      
+    }
+    
+    console.log(statusDict);
+  }
+   document.addEventListener("change",requireDislayBlock);
+  
+  
+
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script>
+  $(window).on('load', function() {
+  $('.loader').fadeOut('slow', function() {
+    $(this).remove();
+  });
+});
+
+</script>
+<body>
+    <div class = "loader">
+        <img src="static/Images/setting.png" alt="">
+        <img src="static/Images/setting.png" alt="">
+    </div>
+    <div class="header">
+
+        <img class="name" src="static/Images/logo.png" alt="" height="80px" width="80px" style="padding: 10px;">
+        <h1 class="name">
+           <span style="color: rgb(26, 95, 173);"> U </span>- CODE
+        </h1>
+        <h4 class="name">
+            The simple way to make <br> Stunning Websites
+        </h4>
+    </div>
+    <form action="/next" method="post" enctype="multipart/form-data" id="form">
+      <!-- Background color and font color -->
+      <div class="colors">
+        <label for="background-color">Background-color</label>
+        <input type="color" name = "background-color" id="background-color" value="#084181"> 
+      </div>
+
+      <div class="colors">
+        <label for="font-color">Font-color</label>
+        <input type="color" name = "font-color" id="font-color" value="#ffffff">
+      </div>
+      
+
+
+      <!---------------------------------- NAVIGATION BAR  ------------------------------>
+      <h1>
+        Choose Naviation bar style :
+      </h1>
+      
+      <div class="image-select">
+        <input type="radio" id="option1" name="nav-select" value="Style1">
+        <label for="option1"><img src="static/Images/navigation1.png" alt="Option 1"></label>
+      
+        <input type="radio" id="option2" name="nav-select" value="Style2">
+        <label for="option2"><img src="static/Images/navigation2.png" alt="Option 2"></label>
+        
+      </div>
+      <div id="style1-nav" style="display:none" class="nav-require">
+        <!-- Style 1 -->
+          <h3>Upload Your Logo Here</h3>
+          <input type="file" name="logo">
+          <h3>How many options do you want ? </h3>
+          <input type="number" name="nav-option-count" id="nav-option-count" required>
+          <!-- this button act as a input creator which create number of option which user give in about count  -->
+          <button onclick="createElementsNav()" type="button">Add</button>
+          <div id="required-nav-options"></div>
+      </div>
+
+
+<!----------------------- NAVIGATION BAR END -------------------- -->
+    <h1>Its Time to design Your Home Page</h1>
+
+    <div class="image-select">
+      <!-- Style selection home -->
+      <input type="radio" id="option3" name="home-select" value="Style1" required>
+      <label for="option3"><img src="static/Images/homedesign1.png" alt="Option 1"></label>
+      <input type="radio" id="option4" name="home-select" value="Style2" required>
+      <label for="option4"><img src="static/Images/homedesign2.png" alt="Option 1"></label>
+      <input type="radio" id="option5" name="home-select" value="Style3" required>
+      <label for="option5"><img src="static/Images/homedesign3.png" alt="Option 1"></label>
+
+    </div>
+    <div id="required-home">
+      <!-- <button onclick="createHomeElements()" type="button">select style</button> -->
+      <!-- For selecting background image or color -->
+      <label for="background-select-home">Background:</label>
+      <select name="background-select-home" id="background-select-home">
+        <option value="color">Color</option>
+        <option value="image">Image</option>
+      </select>
+
+      <!-- Selecting color r image -->
+      
+        <div>
+          <input type="color" name="background-selected" id="background-selected" required value="#084181" >
+        </div>
+        <div style="display: flex;align-items: center;justify-content: center;">
+          <p id="bgblurP" style="display: none;">Background blur</p>
+          <input type="checkbox" name="bgblur" id="bgblur" style="display: none;">
+        </div>  
+        
+      
+      <!-- This division helps to add elements in this div based on style selected -->
+
+      <div id="required-home-elements"></div>
+    </div>
+
+    <h1>Now add the page and add required blocks in that page.</h1>
+    <div class="pages" id="pages">
+      <div class="content"></div>
+      <button onclick="addOption()" type="button">Add</button>
+      <button onclick="removeOption()" type="button">remove</button>
+      <button onclick="requireDislayBlock()" type="button">Print Console</button>
+      <button onclick="blockCount()">Count</button>
+    </div>
+
+      
+    <input type="submit" placeholder="submit" onclick="blockCount()" class="sbbutton">
+      
+    
+
+      </form>
+      <!-- <h1 class="fb">
+        Feedback
+      </h1>
+      <form action="/sendEmail" method="post" class="emailform">
+        <div>
+          <input type="text" name="name" placeholder="Name">
+          <input type="email" name="email" placeholder="Email">
+        </div>
+        
+        <textarea name="feedback" id="" cols="30" rows="10" placeholder="Feedback"></textarea>
+        <button>Send !</button>
+      </form> -->
+      <!--  -->
+</body>
+</html>
