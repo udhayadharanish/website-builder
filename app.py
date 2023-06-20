@@ -64,7 +64,6 @@ def next():
                 bgimage = i+"."+file.filename.split(".")[-1]
                 img = cv2.imread(f"static/design/{bgimage}")
                 blurred = cv2.blur(img,(5,5))
-                cv2.imshow("blure",blurred)
                 cv2.imwrite("static/design/blurred_background.jpg", blurred)
                 
 
