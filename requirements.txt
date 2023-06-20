@@ -1,0 +1,5 @@
+Flask==2.1.1
+gunicorn
+email==6.0.0a1
+secure-smtplib==0.1.1
+opencv-python==4.6.0.66
