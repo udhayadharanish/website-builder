@@ -182,11 +182,13 @@ function createHomeElements(){
     Homestatus = "Style1";
     var oneliner = document.createElement("input");
     oneliner.type = "text";
+    oneliner.setAttribute("autocomplete","off");
     oneliner.name = "home-style1-oneliner";
     oneliner.id = "home-style1-oneliner";
     oneliner.placeholder = "Oneliner About you/your organization";
     oneliner.setAttribute("required","true");
     var about = document.createElement("input");
+    about.setAttribute("autocomplete","off");
     about.type = "text";
     about.name = "home-style1-about";
     about.id = "home-style1-about";
@@ -208,6 +210,7 @@ function createHomeElements(){
     imageStyle2.setAttribute("required","true");
     var heading = document.createElement("input");
     heading.type = "text";
+    heading.setAttribute("autocomplete","off");
     heading.name = "home-style2-heading";
     heading.id = "home-style2-heading";
     heading.placeholder = "Heading";
@@ -215,6 +218,7 @@ function createHomeElements(){
     // heading.setAttribute("required","true");
     var about = document.createElement("input");
     about.type = "text";
+    about.setAttribute("autocomplete","off");
     about.name = "home-style2-about";
     about.id = "home-style2-about";
     about.placeholder = "Brief About you/your organization";
@@ -236,12 +240,14 @@ function createHomeElements(){
 
     var heading = document.createElement("input");
     heading.type = "text";
+    heading.setAttribute("autocomplete","off");
     heading.name = "home-style3-heading";
     heading.id = "home-style3-heading";
     heading.placeholder = "Heading";
 
     var about = document.createElement("input");
     about.type = "text";
+    about.setAttribute("autocomplete","off");
     about.name = "home-style3-about";
     about.id = "home-style3-about";
     about.placeholder = "Brief About you/your organization";
@@ -264,6 +270,7 @@ function createElementsNav() {
     for(var i =0;i<optionCount;i++){
       var input = document.createElement("input");
       input.type = 'text';
+      input.setAttribute("autocomplete","off");
       input.placeholder = `option${count}`;
       input.name = `nav-option${count}`;
       input.id = `nav-option${count}`;
@@ -324,6 +331,7 @@ function createElementsNav() {
     countInput.name = "totalBlock";
     countInput.id = "totalBlock";
     countInput.type = "text";
+    countInput.setAttribute("autocomplete","off");
     countInput.style.display = "none";
     document.querySelector("#form").append(countInput);
   })
@@ -400,6 +408,14 @@ function createElementsNav() {
     input6.name = `content-option${contentOption}`;
     input6.value = "Home3";
     input6.setAttribute("required","true");
+
+    var label7 = document.createElement("label");
+    label7.innerHTML = "Style 7"
+    var input7 = document.createElement("input");
+    input7.type = "radio";
+    input7.name = `content-option${contentOption}`;
+    input7.value = "text-area";
+    input7.setAttribute("required","true");
     
     var image = document.createElement("div");
     image.id = `content-option${contentOption}-display`;
@@ -440,6 +456,8 @@ function createElementsNav() {
     divRadio5.append(input5);
     divRadio6.append(label6);
     divRadio6.append(input6);
+    divRadio6.append(label7);
+    divRadio6.append(input7);
     divInput.append(divRadio1);
     divInput.append(divRadio2);
     divInput.append(divRadio3);
@@ -548,6 +566,7 @@ function createElementsNav() {
   var home1 = 1;
   var home2 = 1;
   var home3 = 1;
+  // var textarea = 1;
   var buttonCount = 1;
   document.addEventListener("change",imageDisplayBlock);
   document.addEventListener("change",function(){
@@ -588,9 +607,11 @@ function createElementsNav() {
               statusDict[`${id}-button`]++;
               var link = document.createElement("input");
               link.placeholder = "Link";
+              link.setAttribute("autocomplete","off");
               link.type = "text";
               link.name = `${id}-link${statusDict[`${id}-button`]}`;
               var linkname = document.createElement("input");
+              linkname.setAttribute("autocomplete","off");
               linkname.type = "text";
               linkname.placeholder = "Link Name";
               linkname.name = `${id}-linkname${statusDict[`${id}-button`]}`;
@@ -624,6 +645,7 @@ function createElementsNav() {
 
           var inputText = document.createElement("input");
           inputText.type = "text";
+          inputText.setAttribute("autocomplete","off");
           inputText.placeholder = "Text area"
           inputText.name = `${blockOptions[i].id}-block1-text${block1}`;
           inputText.id = `${blockOptions[i].id}-block1-text${block1}`;
@@ -691,6 +713,7 @@ function createElementsNav() {
 
           var inputText = document.createElement("input");
           inputText.type = "text";
+          inputText.setAttribute("autocomplete","off");
           inputText.placeholder = "Text area"
           inputText.name = `${blockOptions[i].id}-block2-text${block2}`;
           inputText.id = `${blockOptions[i].id}-block2-text${block2}`;
@@ -818,6 +841,7 @@ function createElementsNav() {
 
           var inputText = document.createElement("input");
           inputText.type = "text";
+          inputText.setAttribute("autocomplete","off");
           inputText.name = `${blockOptions[i].id}-home1-oneliner${home1}`;
           inputText.id = `${blockOptions[i].id}-home1-oneliner${home1}`;
           inputText.placeholder = "one liner";
@@ -826,6 +850,7 @@ function createElementsNav() {
 
           var inputAbout = document.createElement("input");
           inputAbout.type = "text";
+          inputAbout.setAttribute("autocomplete","off");
           inputAbout.name = `${blockOptions[i].id}-home1-about${home1}`;
           inputAbout.id = `${blockOptions[i].id}-home1-about${home1}`;
           inputAbout.placeholder = "about";
@@ -870,6 +895,7 @@ function createElementsNav() {
 
           var inputHead = document.createElement("input");
           inputHead.type = "text";
+          inputHead.setAttribute("autocomplete","off");
           inputHead.name = `${blockOptions[i].id}-home2-heading${home2}`;
           inputHead.id = `${blockOptions[i].id}-home2-heading${home2}`;
           inputHead.placeholder = "Heading";
@@ -878,6 +904,7 @@ function createElementsNav() {
 
           var inputAbout = document.createElement("input");
           inputAbout.type = "text";
+          inputAbout.setAttribute("autocomplete","off");
           inputAbout.name = `${blockOptions[i].id}-home2-about${home2}`;
           inputAbout.id = `${blockOptions[i].id}-home2-about${home2}`;
           inputAbout.placeholder = "About";
@@ -921,6 +948,7 @@ function createElementsNav() {
 
           var inputHead = document.createElement("input");
           inputHead.type = "text";
+          inputHead.setAttribute("autocomplete","off");
           inputHead.name = `${blockOptions[i].id}-home3-heading${home3}`;
           inputHead.id = `${blockOptions[i].id}-home3-heading${home3}`;
           inputHead.placeholder = "Heading";
@@ -929,6 +957,7 @@ function createElementsNav() {
 
           var inputAbout = document.createElement("input");
           inputAbout.type = "text";
+          inputAbout.setAttribute("autocomplete","off");
           inputAbout.name = `${blockOptions[i].id}-home3-about${home3}`;
           inputAbout.id = `${blockOptions[i].id}-home3-about${home3}`;
           inputAbout.placeholder = "About";
@@ -964,7 +993,92 @@ function createElementsNav() {
             }
           Button();
       }
-      
+      else if(RadioValue.value == "text-area" && statusDict[require.id] != "text-area"){
+        statusDict[id+"-textarea"] = 1;
+        textarea = statusDict[id+"-textarea"];
+        require.innerHTML = "Text Area";
+        Button();
+        var div = document.createElement("div");
+        div.id = `${blockOptions[i].id}-textarea-select${textarea}`;
+        div.className = "textarea";
+
+        var select = document.createElement("select");
+        select.name = `${blockOptions[i].id}-textarea-select${textarea}`;
+        select.className = "textarea-select";
+        
+        var option1 = document.createElement("option");
+        option1.value = "heading";
+        option1.innerHTML = "Heading";
+
+        var option2 = document.createElement("option");
+        option2.value = "subheading";
+        option2.innerHTML = "Sub-Heading";
+
+        var option3 = document.createElement("option");
+        option3.value = "paragraph";
+        option3.innerHTML = "Paragraph";
+
+
+        select.append(option1);
+        select.append(option2);
+        select.append(option3);
+        
+        inputArea = document.createElement("textarea");
+        inputArea.name = `${blockOptions[i].id}-textarea-select${textarea}-text`;
+        inputArea.placeholder = "Text";
+        inputArea.style.height = "100px";
+        inputArea.style.width = "250px";
+
+
+        
+        statusDict[id+"-textarea"]++;
+        var add = document.createElement("button");
+        add.type = "button";
+        add.innerHTML = "Add section";
+        add.addEventListener("click" , function(){
+          addtext(require,id);
+        })
+        var remove = document.createElement("button");
+        remove.type = "button";
+        remove.innerHTML = "remove section";
+        remove.addEventListener("click" , function(){
+          console.log(statusDict[id+"-textarea"]);
+          if(statusDict[id+"-textarea"] - 1 > 1 ){
+            statusDict[id+"-textarea"]--;
+            var ele = document.querySelector(`#${id}-textarea-select${statusDict[id+"-textarea"]}`);
+            console.log(ele);
+            require.removeChild(ele);
+          }
+          
+
+        })
+
+        require.append(add);
+        require.append(remove);
+        div.append(select);
+        div.append(inputArea);
+        require.append(div);
+
+        statusDict[require.id] = "text-area";
+        if(statusDict[require.id] == "Block2"){
+            block2--;
+            }
+            if(statusDict[require.id] == "Block1"){
+              block1--;
+            }
+            if(statusDict[require.id] == "Home1"){
+              home1--;
+            }
+            if(statusDict[require.id] == "Home2"){
+              home2--;
+            }
+            if(statusDict[require.id] == "Block3"){
+              block3--;
+            }
+            
+          
+
+      }
 
 
 
@@ -975,6 +1089,49 @@ function createElementsNav() {
   }
    document.addEventListener("change",requireDislayBlock);
   
+  function addtext(require,id){
+        textarea = statusDict[id+"-textarea"];
+
+        var div = document.createElement("div");
+        div.id = `${id}-textarea-select${textarea}`;
+        div.className = "textarea";
+
+        var select = document.createElement("select");
+
+        select.name = `${id}-textarea-select${textarea}`;
+        select.className = "textarea-select";
+        
+        var option1 = document.createElement("option");
+        option1.value = "heading";
+        option1.innerHTML = "Heading";
+
+        var option2 = document.createElement("option");
+        option2.value = "subheading";
+        option2.innerHTML = "Sub-Heading";
+
+        var option3 = document.createElement("option");
+        option3.value = "paragraph";
+        option3.innerHTML = "Paragraph";
+
+        select.append(option1);
+        select.append(option2);
+        select.append(option3);
+
+        inputArea = document.createElement("textarea");
+        inputArea.name = `${id}-textarea-select${textarea}-text`;
+        inputArea.placeholder = "Text";
+        inputArea.style.height = "100px";
+        inputArea.style.width = "250px";
+        inputArea.setAttribute("required","true")
+
+
+        
+        div.append(select);
+        div.append(inputArea);
+        require.append(div);
+        statusDict[id+"-textarea"]++;
+  }
+
   
 
 </script>
@@ -1070,7 +1227,7 @@ function createElementsNav() {
           <input type="color" name="background-selected" id="background-selected" required value="#084181" >
         </div>
         <div style="display: flex;align-items: center;justify-content: center;">
-          <p id="bgblurP" style="display: none;">Background blur</p>
+          <p id="bgblurP" style="display: none;color:aliceblue;">Background blur</p>
           <input type="checkbox" name="bgblur" id="bgblur" style="display: none;">
         </div>  
         
