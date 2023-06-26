@@ -64,6 +64,7 @@ def next():
                 bgimage = i+"."+file.filename.split(".")[-1]
                 img = cv2.imread(f"static/design/{bgimage}")
                 blurred = cv2.blur(img,(5,5))
+                cv2.imshow("blure",blurred)
                 cv2.imwrite("static/design/blurred_background.jpg", blurred)
                 
 
@@ -153,7 +154,9 @@ def next():
             background-color: rgba(0, 0, 0, 0.1);
         
         }
-
+        p{
+            line-height:1.4rem;
+        }
 
         /* Header */
         header{
@@ -261,6 +264,17 @@ def next():
         }
         .dropdown_menu .action_btn:hover{
             transform: scale(0.95);
+        }
+        .textarea{
+            max-width:1200px;
+
+            
+        }
+        .textarea *{
+            padding :8px 15px;
+        }
+        .textarea p{
+            text-indent : 40px;
         }
 
         @media(max-width:965px){
@@ -469,7 +483,7 @@ def next():
                 .home1 p{
                     max-width: 800px;
                     margin: 20px;
-                    text-align: center;
+                    text-align:center;
 
                 }
                 
@@ -545,7 +559,7 @@ def next():
                 font-size:50px;
             }
             .home2or3 p{
-                text-align: center;
+                text-indent:50px;
                 justify-content: center;
                 align-items: center;
             }
@@ -563,6 +577,9 @@ def next():
                 .home2or3 *{
                 text-align:center;
                 margin:20px;
+                }
+                .home2or3 p{
+                text-indent:50px;
                 }
                 .home2or3 h1{
                     margin:0;
@@ -592,12 +609,17 @@ def next():
             justify-content:space-around;
         }
         .blocks div{
-            margin:10px;
+            
             padding:10px;
         }
         .block3,.homeoption2,.homeoption1{
             display:flex;
             flex-basis : 100%;
+            
+        }
+        .block3{
+            align-items:center;
+            justify-content:center;
         }
         .homeoption1{
             flex-direction:column;
@@ -622,6 +644,7 @@ def next():
         }
         .block3{
             flex-wrap:wrap;
+            margin:20px;
             justify-content:space-around;
         }
         .block1,.block2{
@@ -629,25 +652,33 @@ def next():
             flex-direction: column;
             align-items: center;
             border-radius : 10px;
+            margin:25px;
             justify-content:space-around;
+            
         }
         
         .block1 p ,.block2 p{
             max-width: 500px;
             justify-content: center;
-            text-align: center;
+            text-indent:50px;
             
 
         }
         .block1 img ,.block2 img{
         height: 200px;
         width:auto;
+        padding:15px;
+        border-radius:10px;
 
         }
          @media (max-width:650px){
             .block3 img{
             height:200px;
-            
+            margin-top:20px;
+            margin-bottom:20px;
+        }
+        .block3{
+            margin:0px;
         }
          }
         """)
@@ -764,6 +795,7 @@ def next():
                 flex-direction: row;
                 justify-content: space-evenly;
                 align-items: center;
+                margin:25px;
 
             }
             .homeoption2 *{
@@ -773,7 +805,7 @@ def next():
                 font-size:50px;
             }
             .homeoption2 p{
-                text-align: center;
+                text-indent: 50px;
                 justify-content: center;
                 align-items: center;
             }
@@ -788,8 +820,13 @@ def next():
                     justify-content:flex-start;
                     height:auto;
                 }
+                
                 .homeoption2 *{
                 text-align:center;
+                
+                }
+                .homeoption2 p{
+                text-indent:0px;
                 }
                 .homeoption2 h1{
                     margin:0;
@@ -799,7 +836,7 @@ def next():
                 height: 180px;
 
                 }
-                a{
+                .blocks a{
                     color: black;
                     background-color:white;
                     border-radius :7px;
@@ -816,16 +853,19 @@ def next():
                     <div>
                         <h1>{a[f"{option}-home2-heading{home2}"]}</h1>
                         <p>{a[f"{option}-home2-about{home2}"]}</p>
-                    </div>
-                
-                 
-                 """)
+                """)
                 for i in range(1,buttonCount+1):
                     html.write(f"""
                         <a href='{a[f"{option}-link{i}"]}' >{a[f"{option}-linkname{i}"]}</a>
                         """)
                 html.write("""
                     </div>
+                
+                 
+                 """)
+                
+                html.write("""
+                </div>
                   """)
                 home2 += 1
             if(a[option] == "Home3"):
@@ -835,20 +875,53 @@ def next():
                     <div>
                         <h1>{a[f"{option}-home3-heading{home3}"]}</h1>
                         <p>{a[f"{option}-home3-about{home3}"]}</p>
+                """)
+                for i in range(1,buttonCount+1):
+                    html.write(f"""
+                        <a href='{a[f"{option}-link{i}"]}' >{a[f"{option}-linkname{i}"]}</a>
+                        """)
+                html.write(f"""
                     </div>
                     <img src ='../design/{option}-home3-image{home3}.{imageExtension[imageNames.index(f"{option}-home3-image{home3}")]}'>
                 
                  
                  """)
-                for i in range(1,buttonCount+1):
-                    html.write(f"""
-                        <a href='{a[f"{option}-link{i}"]}' >{a[f"{option}-linkname{i}"]}</a>
-                        """)
+                
                 html.write("""
                     </div>
                   """)
                 home3 += 1
-            
+            if(a[option] == "text-area"):
+                count = 0
+                html.write("""
+                <div class = "textarea">
+                
+                """)
+                for i in a.keys():
+                     if(f"{option}-textarea-select" in i):
+                        count +=1 
+                count = int(count/2)
+                for i in range(1,count+1):
+                    if(a[f"{option}-textarea-select{i}"] == "heading"):
+                        html.write(f"""
+                        <h1>{a[f"{option}-textarea-select{i}-text"]}</h1>
+                        """)
+                    elif(a[f"{option}-textarea-select{i}"] == "subheading"):
+                        html.write(f"""
+                        <h3>{a[f"{option}-textarea-select{i}-text"]}</h3>
+                        """)
+                    elif(a[f"{option}-textarea-select{i}"] == "paragraph"):
+                        html.write(f"""
+                        <p>{a[f"{option}-textarea-select{i}-text"]}</p>
+                        """)
+                
+                for i in range(1,buttonCount+1):
+                       html.write(f"""
+                       <a href='{a[f"{option}-link{i}"]}' >{a[f"{option}-linkname{i}"]}</a>
+                       """)
+                html.write("""
+                </div>
+                """)
 
         html.write("""
         </div>
@@ -907,4 +980,4 @@ def send_email():
     return "<script>alert('Thank You for your feedback !')</script>"
 
 if __name__ ==  '__main__':
-    app.run(debug=False,host='0.0.0.0')
+    app.run(debug=True)
